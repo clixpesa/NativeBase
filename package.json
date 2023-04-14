@@ -98,6 +98,8 @@
     "visualize-bundle": "^1.4.0"
   },
   "peerDependencies": {
+    "@types/react": "*",
+    "@types/react-native": "*",
     "react": "*",
     "react-dom": "*",
     "react-native": "*",
@@ -120,7 +122,7 @@
       "<rootDir>/src/jest/mock.ts"
     ]
   },
-  "husky-run": {
+  "husky": {
     "hooks": {
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
       "pre-commit": "yarn lint-staged"
@@ -177,6 +179,14 @@
     ]
   },
   "dependencies": {
+    "@react-aria/visually-hidden": "^3.8.0",
+    "@react-stately/checkbox": "^3.4.1",
+    "@react-stately/collections": "^3.7.0",
+    "@react-stately/combobox": "^3.5.0",
+    "@react-stately/radio": "^3.8.0",
+    "@react-stately/slider": "^3.3.1",
+    "@react-stately/tabs": "^3.4.0",
+    "@react-stately/toggle": "^3.5.1",
     "inline-style-prefixer": "^6.0.1",
     "lodash.clonedeep": "^4.5.0",
     "lodash.get": "^4.4.2",
