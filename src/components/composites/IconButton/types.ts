@@ -4,36 +4,39 @@ import type { ColorSchemeType, PlatformProps } from '../../../components/types';
 
 import type { CustomProps, VariantType } from '../../types';
 import type { ThemeComponentSizeType } from '../../../components/types/utils';
+
+type OmitProps = Omit<
+  InterfacePressableProps<InterfaceIconButtonProps>,
+  | 'children'
+  | 'color'
+  | '_light'
+  | '_dark'
+  | '_web'
+  | '_android'
+  | '_ios'
+  | '_important'
+> &
+  Omit<
+    IIconProps,
+    | 'delayLongPress'
+    | 'disabled'
+    | 'hitSlop'
+    | 'onLongPress'
+    | 'onPress'
+    | 'onPressIn'
+    | 'onPressOut'
+    | 'style'
+    | 'size'
+    | '_light'
+    | '_dark'
+    | '_web'
+    | '_android'
+    | '_ios'
+    | '_important'
+  >;
+
 export interface InterfaceIconButtonProps
-  extends Omit<
-      InterfacePressableProps<InterfaceIconButtonProps>,
-      | 'children'
-      | 'color'
-      | '_light'
-      | '_dark'
-      | '_web'
-      | '_android'
-      | '_ios'
-      | '_important'
-    >,
-    Omit<
-      IIconProps,
-      | 'delayLongPress'
-      | 'disabled'
-      | 'hitSlop'
-      | 'onLongPress'
-      | 'onPress'
-      | 'onPressIn'
-      | 'onPressOut'
-      | 'style'
-      | 'size'
-      | '_light'
-      | '_dark'
-      | '_web'
-      | '_android'
-      | '_ios'
-      | '_important'
-    >,
+  extends OmitProps,
     PlatformProps<IIconButtonProps> {
   /**
    * The color of the radio when it's checked. This should be one of the color keys in the theme (e.g."green", "red").
