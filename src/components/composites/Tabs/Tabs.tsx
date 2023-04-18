@@ -4,7 +4,7 @@ import type { ITabsProps } from './types';
 import { useThemeProps } from '../../../hooks';
 import { TabsContext } from './Context';
 import { Item } from '@react-stately/collections';
-import { useTabsState } from '@react-stately/tabs';
+import { useTabListState } from '@react-stately/tabs';
 import TabViews from './TabViews';
 import TabBar from './TabBar';
 import { useTabs } from '@react-native-aria/tabs';
@@ -71,7 +71,7 @@ const Tabs = ({ children, ...props }: ITabsProps, ref: any) => {
     keyboardActivation: props.keyboardActivation,
   };
   // useTabsState needs collection children.
-  let state = useTabsState(mappedProps);
+  const state = useTabListState(mappedProps);
   const setAlign = () => {
     switch (align) {
       case 'start':
@@ -84,8 +84,12 @@ const Tabs = ({ children, ...props }: ITabsProps, ref: any) => {
         return 'flex-start';
     }
   };
-  let tablistRef = React.useRef<any>();
-  let { tabListProps, tabPanelProps } = useTabs(mappedProps, state, tablistRef);
+  const tablistRef = React.useRef<any>();
+  const { tabListProps, tabPanelProps } = useTabs(
+    mappedProps,
+    state,
+    tablistRef
+  );
   //TODO: refactor for responsive prop
   if (useHasResponsiveProps(props)) {
     return null;
