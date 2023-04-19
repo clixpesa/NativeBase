@@ -9,7 +9,7 @@ export const getResponsiveStylesImpl = (width: number) => (
   queries: GetResponsiveStylesParams
 ): GetResponsiveStylesReturnType => {
   if (typeof width === 'number') {
-    let styles = queries.initial
+    const styles = queries.initial
       ? [
           StyleSheet.create({ initial: StyleSheet.flatten(queries.initial) })
             .initial,
@@ -72,14 +72,17 @@ export const useDimensionsWithEnable = ({ enable }: { enable?: boolean }) => {
           setDimensions(window);
         }
       }
-      Dimensions.addEventListener('change', handleChange);
+      const dimentionsSubscription = Dimensions.addEventListener(
+        'change',
+        handleChange
+      );
       // We might have missed an update between calling `get` in render and
       // `addEventListener` in this handler, so we set it here. If there was
       // no change, React will filter out this update as a no-op.
       handleChange({ window: Dimensions.get('window') });
 
       return () => {
-        Dimensions.removeEventListener('change', handleChange);
+        dimentionsSubscription?.remove();
       };
     }
     return () => {};
