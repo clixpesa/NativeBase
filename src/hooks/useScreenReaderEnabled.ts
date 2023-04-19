@@ -18,7 +18,7 @@ export function useScreenReaderEnabled() {
       handleSetEnabled(res);
     }
 
-    let handler: any = AccessibilityInfo.addEventListener(
+    const handler = AccessibilityInfo.addEventListener(
       'screenReaderChanged',
       (event: any) => {
         handleSetEnabled(event);
@@ -28,7 +28,7 @@ export function useScreenReaderEnabled() {
     setInitialValue();
     return () => {
       mountedRef.current = false;
-      AccessibilityInfo.removeEventListener('screenReaderChanged', handler);
+      handler.remove();
     };
   });
 
