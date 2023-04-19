@@ -33,12 +33,13 @@ const Tab = (
     state,
     isFitted,
   }: ITabsContextProps = React.useContext(TabsContext);
-  let tabRef = React.useRef<any>(null);
+  const tabRef = React.useRef<any>(null);
   const _ref = React.useRef(null);
   const { isHovered } = useHover({}, _ref);
-  let isSelected = state.selectedKey === item.key;
+  const isSelected = state.selectedKey === item.key;
+  const key = item.key;
 
-  let { tabProps } = useTab({ item, isDisabled }, state, tabRef);
+  const { tabProps } = useTab({ key, isDisabled }, state, tabRef);
 
   React.useEffect(() => {
     if (isDisabled) {
