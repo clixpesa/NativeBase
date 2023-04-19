@@ -66,7 +66,7 @@ export interface InterfacePressableProps<T = IPressableProps>
 
   children?:
     | React.ReactNode
-    | (({
+    | ((({
         isPressed,
         isHovered,
         isFocused,
@@ -74,7 +74,8 @@ export interface InterfacePressableProps<T = IPressableProps>
         isPressed: boolean;
         isHovered: boolean;
         isFocused: boolean;
-      }) => any);
+      }) => any) &
+        PressableProps['children']);
 }
 
 // export type IPressableProps<T> =

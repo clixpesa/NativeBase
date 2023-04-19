@@ -8,9 +8,7 @@ import type { IColors } from '../../../theme/base/colors';
 import type { InterfaceBoxProps } from '../Box';
 import type { ColorSchemeType } from '../../../components/types';
 
-export interface InterfaceSwitchProps
-  extends Omit<SwitchProps, 'tintColor'>,
-    InterfaceBoxProps<ISwitchProps> {
+export interface InterfaceSwitchProps extends Omit<SwitchProps, 'tintColor'> {
   /**
    * The size (width and height) of the switch.
    * @default md
@@ -70,4 +68,6 @@ export interface InterfaceSwitchProps
   _hover?: Omit<Partial<ISwitchProps>, '_hover'>;
 }
 
-export type ISwitchProps = InterfaceSwitchProps & CustomProps<'Switch'>;
+export type ISwitchProps = InterfaceSwitchProps &
+  CustomProps<'Switch'> &
+  InterfaceBoxProps<ISwitchProps>;
