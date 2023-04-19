@@ -6,12 +6,13 @@ import type { IColors } from '../../../theme/base/colors';
 
 import type { CustomProps, ThemeComponentSizeType } from '../../types/utils';
 
+type thisOmitProps = Omit<
+  SvgProps,
+  'opacity' | 'stroke' | 'height' | 'width' | 'transform' | 'color'
+> &
+  StyledProps;
 export interface InterfaceIconProps
-  extends Omit<
-      SvgProps,
-      'opacity' | 'stroke' | 'height' | 'width' | 'transform' | 'color'
-    >,
-    StyledProps,
+  extends thisOmitProps,
     PlatformProps<IIconProps> {
   // name?: IconNameType;
   // type?: IconType;
