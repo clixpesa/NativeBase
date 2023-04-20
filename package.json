@@ -1,5 +1,5 @@
 {
-  "name": "native-base",
+  "name": "@clixpesa/native-base",
   "description": "Essential cross-platform UI components for React Native",
   "sideEffects": false,
   "keywords": [
@@ -13,6 +13,9 @@
     "navbar",
     "packager"
   ],
+  "publishConfig": {
+    "@clixpesa:registry": "https://npm.pkg.github.com"
+  },
   "scripts": {
     "test": "node_modules/.bin/jest",
     "typescript": "tsc --noEmit",
